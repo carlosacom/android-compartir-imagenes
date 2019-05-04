@@ -35,10 +35,7 @@ public class MainActivity extends AppCompatActivity {
         this.register = findViewById(R.id.register);
         this.submit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this,email.getText().toString() + " " + password.getText().toString(), Toast.LENGTH_LONG ).show();
-                login(email.getText().toString(), password.getText().toString());
-            }
+            public void onClick(View v) { login(email.getText().toString(), password.getText().toString()); }
         });
         this.register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,13 +43,14 @@ public class MainActivity extends AppCompatActivity {
                 goTo(NewUserActivity.class);
             }
         });
+
     }
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        goTo(MainContainerActivity.class);
+        // goTo(MainContainerActivity.class);
         // updateUI(currentUser);
     }
     private void login (String email, String password) {
@@ -76,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    private void goTo (Class Activity) {
+    public void goTo (Class Activity) {
         Intent intent = new Intent(this, Activity);
         startActivity(intent);
     }

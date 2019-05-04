@@ -17,7 +17,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Digite su email"
-                android:id="@+id/email"
+                android:id="@+id/emailRegister"
                 android:textSize="20dp"
                 android:inputType="textEmailAddress">
             </android.support.design.widget.TextInputEditText>
@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Contraseña"
-                android:id="@+id/password"
+                android:id="@+id/passwordRegister"
                 android:textSize="20dp"
                 android:inputType="textPassword">
             </android.support.design.widget.TextInputEditText>
@@ -47,6 +47,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Regístrate"
-            android:id="@+id/submit"/>
+            android:id="@+id/submitRegister"/>
     </LinearLayout>
 </LinearLayout>
