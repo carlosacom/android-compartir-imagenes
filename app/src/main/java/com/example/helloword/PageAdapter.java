@@ -5,8 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class PageAdapter extends FragmentPagerAdapter {
-    private byte numOfTabs;
-    public PageAdapter(FragmentManager fm, byte numOfTabs) {
+    private int numOfTabs;
+    public PageAdapter(FragmentManager fm, int numOfTabs) {
         super(fm);
         this.numOfTabs = numOfTabs;
     }

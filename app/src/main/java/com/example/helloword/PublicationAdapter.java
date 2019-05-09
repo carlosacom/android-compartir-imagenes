@@ -10,15 +10,19 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class PublicationAdapter extends RecyclerView.Adapter<PublicationAdapter.PublicationViewHolder> {
     private Context context;
     private ArrayList<Plublication> publications;
+    private int resource;
 
-    public PublicationAdapter(Context context, ArrayList<Plublication> publications) {
+    public PublicationAdapter( ArrayList<Plublication> publications, int resource, Context context) {
         this.context = context;
         this.publications = publications;
+        this.resource = resource;
     }
 
     @NonNull
@@ -32,6 +36,7 @@ public class PublicationAdapter extends RecyclerView.Adapter<PublicationAdapter.
     @Override
     public void onBindViewHolder(@NonNull PublicationViewHolder publicationViewHolder, int i) {
         publicationViewHolder.cardTitle.setText(publications.get(i).getTitle());
+        Picasso.get().load(publications.get(i).getImage()).into(publicationViewHolder.cardImage);
     }
 
     @Override
@@ -42,12 +47,12 @@ public class PublicationAdapter extends RecyclerView.Adapter<PublicationAdapter.
     static class PublicationViewHolder extends RecyclerView.ViewHolder {
         TextView cardTitle;
         ImageView cardImage;
-        CheckBox cardLike;
+        // CheckBox cardLike;
         public PublicationViewHolder(@NonNull View itemView) {
             super(itemView);
             cardTitle = itemView.findViewById(R.id.cardTitle);
             cardImage = itemView.findViewById(R.id.cardImage);
-            cardLike = itemView.findViewById(R.id.cardImage);
+            // cardLike = itemView.findViewById(R.id.cardImage);
         }
     }
 }

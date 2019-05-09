@@ -12,6 +12,7 @@ public class MainContainerActivity extends AppCompatActivity {
     public TabItem profile;
     public TabItem gallery;
     public ViewPager container;
+    public PageAdapter pageAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,5 +22,10 @@ public class MainContainerActivity extends AppCompatActivity {
         this.profile = findViewById(R.id.profile);
         this.gallery = findViewById(R.id.gallery);
         this.container = findViewById(R.id.container);
+        this.pageAdapter = new PageAdapter(getSupportFragmentManager(), tab.getTabCount());
+        container.setAdapter(pageAdapter);
+        container.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tab));
+
+
     }
 }
