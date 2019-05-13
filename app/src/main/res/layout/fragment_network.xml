@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/plus">
-    </android.support.design.widget.FloatingActionButton>>
+        android:src="@drawable/plus"
+        android:id="@+id/addPublication">
+    </android.support.design.widget.FloatingActionButton>
 </LinearLayout>
