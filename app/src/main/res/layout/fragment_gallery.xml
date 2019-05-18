@@ -4,11 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GalleryFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <GridView
+        android:id="@+id/grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hola mundo soy la galería" />
+        android:columnWidth="120dp"
+        android:horizontalSpacing="1dp"
+        android:numColumns="auto_fit"
+        android:padding="1dp"
+        android:verticalSpacing="10dp" >
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerContainerGallery">
+        </android.support.v7.widget.RecyclerView>
+    </GridView>
+
 
 </FrameLayout>
