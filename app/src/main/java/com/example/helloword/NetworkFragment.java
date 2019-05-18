@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 
 
 /**
@@ -57,6 +58,7 @@ public class NetworkFragment extends Fragment {
         this.publicationRecycler = (RecyclerView)view.findViewById(R.id.recyclerContainer);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        linearLayoutManager.setReverseLayout(true);
         this.publicationRecycler.setLayoutManager(linearLayoutManager);
         this.publicationAdapter = new PublicationAdapter(this.getNetworkCloud() ,R.layout.card,getActivity());
         this.publicationRecycler.setAdapter(publicationAdapter);
@@ -119,6 +121,7 @@ public class NetworkFragment extends Fragment {
                         Log.d(TAG, "Value is: ");
                         publicationAdapter.notifyDataSetChanged();
                     }
+
                 }
                 // publications.add(dataSnapshot.getValue(Plublication.class));
             }

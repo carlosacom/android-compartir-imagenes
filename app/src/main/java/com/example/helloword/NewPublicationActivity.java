@@ -66,7 +66,7 @@ public class NewPublicationActivity extends AppCompatActivity {
         this.newPublicationImage.setDrawingCacheEnabled(true);
         this.newPublicationImage.buildDrawingCache();
         Bitmap bitmap = this.newPublicationImage.getDrawingCache();
-        bitmap = redimensionarImagenMaximo(bitmap, 200, 200);
+        bitmap = redimensionarImagenMaximo(bitmap, 1000, 1000);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] photoByte=baos.toByteArray();

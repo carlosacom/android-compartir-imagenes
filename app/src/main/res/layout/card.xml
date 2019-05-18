@@ -4,6 +4,9 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginVertical="5dp"
+    android:layout_marginHorizontal="5dp"
+    android:elevation="50dp"
     card_view:cardCornerRadius="4dp">
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,11 +16,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mi mama me quiere"
-            android:id="@+id/cardTitle"/>
+            android:id="@+id/cardTitle"
+            android:gravity="center_horizontal"
+            android:textSize="26dp"
+            android:paddingBottom="10dp"/>
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:src="@drawable/image2"
+            android:layout_gravity="center"
+            android:elevation="@dimen/cardview_compat_inset_shadow"
             android:id="@+id/cardImage"/>
         <CheckBox
             android:layout_width="wrap_content"

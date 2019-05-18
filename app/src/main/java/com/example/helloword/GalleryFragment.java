@@ -3,6 +3,7 @@ package com.example.helloword;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -37,13 +38,14 @@ public class GalleryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
         this.publicationRecycler = (RecyclerView)view.findViewById(R.id.recyclerContainerGallery);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        this.publicationRecycler.setLayoutManager(linearLayoutManager);
-        this.imageGalleryAdapter = new ImageGalleryAdapter(this.getGalleryCloud() ,R.layout.card_gallery,getActivity());
+        ArrayList<Plublication> data = this.getGalleryCloud();
+        GridLayoutManager   gridLayoutManager = new GridLayoutManager  (getContext(), 3, GridLayoutManager.VERTICAL, false);
+//        gridLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
+        System.out.println(data.size());
+        this.publicationRecycler.setLayoutManager(gridLayoutManager);
+        this.imageGalleryAdapter = new ImageGalleryAdapter(data,R.layout.card_gallery,getActivity());
         this.publicationRecycler.setAdapter(imageGalleryAdapter);
         return view;
-
     }
 
     public ArrayList getGalleryCloud() {
