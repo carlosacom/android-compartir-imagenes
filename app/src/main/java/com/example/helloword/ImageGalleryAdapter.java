@@ -1,13 +1,16 @@
 package com.example.helloword;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -34,19 +37,32 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<ImageGalleryAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder imageViewHolder, int i) {
-        Picasso.get().load(images.get(i).getImage()).into(imageViewHolder.ImageGallery);
+        Picasso.get().load(images.get(i).getImage()).into(imageViewHolder.imageGallery);
     }
 
     @Override
     public int getItemCount() {
         return images.size();
     }
-    static class ImageViewHolder extends RecyclerView.ViewHolder {
-        ImageView ImageGallery;
+    class ImageViewHolder extends RecyclerView.ViewHolder {
+        ImageView imageGallery;
         // CheckBox cardLike;
         public ImageViewHolder(@NonNull View itemView) {
             super(itemView);
-            ImageGallery = itemView.findViewById(R.id.imageGallery);
+            imageGallery = itemView.findViewById(R.id.imageGallery);
+            imageGallery.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Plublication item = images.get(getLayoutPosition());
+                    Intent intent = new Intent(context, ViewPublication.class);
+                    intent.putExtra("publication", item);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
+
 }
+
+
+

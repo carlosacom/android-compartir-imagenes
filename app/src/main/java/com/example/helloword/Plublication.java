@@ -1,6 +1,8 @@
 package com.example.helloword;
 
-public class Plublication {
+import java.io.Serializable;
+
+public class Plublication implements Serializable {
     private String id;
     private String title;
     private String image;

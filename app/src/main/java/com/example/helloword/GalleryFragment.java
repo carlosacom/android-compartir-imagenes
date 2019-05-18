@@ -2,14 +2,16 @@ package com.example.helloword;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,6 +30,7 @@ public class GalleryFragment extends Fragment {
     RecyclerView publicationRecycler;
     ImageGalleryAdapter imageGalleryAdapter;
     FirebaseDatabase firebaseDatabase;
+    ArrayList<Plublication> data;
     public GalleryFragment() {
         this.firebaseDatabase = FirebaseDatabase.getInstance();
     }
@@ -38,15 +41,14 @@ public class GalleryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
         this.publicationRecycler = (RecyclerView)view.findViewById(R.id.recyclerContainerGallery);
-        ArrayList<Plublication> data = this.getGalleryCloud();
+        this.data = this.getGalleryCloud();
         GridLayoutManager   gridLayoutManager = new GridLayoutManager  (getContext(), 3, GridLayoutManager.VERTICAL, false);
-//        gridLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
-        System.out.println(data.size());
         this.publicationRecycler.setLayoutManager(gridLayoutManager);
         this.imageGalleryAdapter = new ImageGalleryAdapter(data,R.layout.card_gallery,getActivity());
         this.publicationRecycler.setAdapter(imageGalleryAdapter);
         return view;
     }
+
 
     public ArrayList getGalleryCloud() {
         DatabaseReference myRef = this.firebaseDatabase.getReference();
@@ -56,8 +58,6 @@ public class GalleryFragment extends Fragment {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
                 publications.clear();
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot data:dataSnapshot.getChildren()) {
@@ -67,7 +67,6 @@ public class GalleryFragment extends Fragment {
                         imageGalleryAdapter.notifyDataSetChanged();
                     }
                 }
-                // publications.add(dataSnapshot.getValue(Plublication.class));
             }
 
             @Override
