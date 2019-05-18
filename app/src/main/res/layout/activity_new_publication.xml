@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".NewPublicationActivity">
-    <!--ImageView
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/newImagePublication"/-->
+        android:layout_height="250dp"
+        android:src="@drawable/image2"
+        android:id="@+id/newPublicationImage"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Titulo de la imagen"
-                android:id="@+id/newTitle"
+                android:id="@+id/newPublicationTitle"
                 android:textSize="20dp">
             </android.support.design.widget.TextInputEditText>
         </android.support.design.widget.TextInputLayout>
@@ -29,6 +30,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Publicar"
-            android:id="@+id/newSubmit"/>
+            android:id="@+id/newPublicationSubmit"/>
     </LinearLayout>
 </LinearLayout>
